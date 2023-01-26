@@ -1,5 +1,5 @@
 import mongoose, { Schema, Types, model } from "mongoose";
-import bcrypt from "bcrypt";
+import * as bcrypt from "bcrypt";
 
 export interface UserDocument extends mongoose.Document {
   _id: Types.ObjectId;
