@@ -17,12 +17,7 @@ require("dotenv").config({ path: __dirname + "/../.env" });
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(mongoSanitize());
-app.use(
-  cors({
-    origin: "http://localhost:3000",
-    credentials: true,
-  })
-);
+app.use(cors());
 
 const store = new MongoStore({
   mongoUrl: process.env.mongoURI as string,
