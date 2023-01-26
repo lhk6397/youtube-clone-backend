@@ -44,9 +44,9 @@ app.use(
     cookie: {
       httpOnly: true,
       maxAge: 1000 * 60 * 60 * 24 * 7,
-      secure: false,
       sameSite: "none",
-      domain: "https://youtube-clone-frontend.onrender.com/",
+      path: "/",
+      domain: "youtube-clone-frontend.onrender.com",
     },
   })
 );
