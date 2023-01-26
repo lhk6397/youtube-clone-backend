@@ -20,7 +20,7 @@ app.use(mongoSanitize());
 app.use(
   cors({
     origin: [
-      "https://youtube-clone-frontend-a4r2ixxkp-maruhxn.vercel.app",
+      "https://youtube-clone-frontend-eight.vercel.app/",
       "http://localhost:3000",
     ],
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
@@ -45,6 +45,7 @@ app.use(
       maxAge: 1000 * 60 * 60 * 24 * 7,
       secure: true,
       sameSite: "none",
+      domain: "youtube-clone-frontend-eight.vercel.app/",
     },
   })
 );
