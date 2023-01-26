@@ -17,7 +17,16 @@ require("dotenv").config({ path: __dirname + "/../.env" });
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(mongoSanitize());
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "https://youtube-clone-frontend-a4r2ixxkp-maruhxn.vercel.app",
+      "http://localhost:3000",
+    ],
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    credentials: true,
+  })
+);
 
 const store = new MongoStore({
   mongoUrl: process.env.mongoURI as string,
@@ -31,9 +40,9 @@ app.use(
     saveUninitialized: false,
     store,
     cookie: {
-      httpOnly: false,
+      httpOnly: true,
       maxAge: 1000 * 60 * 60 * 24 * 7,
-      secure: false,
+      secure: true,
     },
   })
 );
