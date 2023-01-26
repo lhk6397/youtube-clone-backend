@@ -14,14 +14,13 @@ const app: Express = express();
 const PORT = process.env.PORT || 5000;
 app.set("trust proxy", 1);
 
-require("dotenv").config({ path: __dirname + "/../.env" });
+require("dotenv").config();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(mongoSanitize());
 app.use(
   cors({
     origin: [
-      "https://youtube-clone-frontend-a4r2ixxkp-maruhxn.vercel.app",
       "https://youtube-clone-frontend-eight.vercel.app",
       "http://localhost:3000",
     ],
@@ -45,7 +44,7 @@ app.use(
     cookie: {
       httpOnly: true,
       maxAge: 1000 * 60 * 60 * 24 * 7,
-      secure: true,
+      secure: false,
       sameSite: "none",
       domain: "youtube-clone-frontend-eight.vercel.app/",
     },
