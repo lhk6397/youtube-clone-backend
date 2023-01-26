@@ -1,7 +1,7 @@
 import mongoSanitize from "express-mongo-sanitize";
 import connect from "./db";
 import cors from "cors";
-import express, { Express, Request, Response } from "express";
+import express, { Express } from "express";
 import session from "express-session";
 import MongoStore from "connect-mongo";
 import userRouter from "./routes/user.routes";
@@ -21,7 +21,7 @@ app.use(mongoSanitize());
 app.use(
   cors({
     origin: [
-      "https://youtube-clone-frontend.onrender.com/",
+      "https://youtube-clone-frontend.onrender.com",
       "http://localhost:3000",
     ],
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
@@ -44,6 +44,7 @@ app.use(
     cookie: {
       httpOnly: true,
       maxAge: 1000 * 60 * 60 * 24 * 7,
+      secure: false,
       sameSite: "none",
       path: "/",
       domain: "youtube-clone-frontend.onrender.com",
