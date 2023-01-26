@@ -35,6 +35,7 @@ const store = new MongoStore({
 
 app.use(
   session({
+    name: (process.env.COOKIE_NAME as string) || "session",
     secret: (process.env.COOKIE_SECRET as string) || "secret",
     resave: false,
     saveUninitialized: false,
@@ -42,7 +43,7 @@ app.use(
     cookie: {
       httpOnly: true,
       maxAge: 1000 * 60 * 60 * 24 * 7,
-      secure: true,
+      secure: false,
     },
   })
 );
