@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(mongoSanitize());
 app.use(
   cors({
-    origin: ["https://marutube.shop/", "http://localhost:3000"],
+    origin: ["https://marutube.shop", "http://localhost:3000"],
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true,
   })
