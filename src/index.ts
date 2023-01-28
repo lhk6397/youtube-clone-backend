@@ -12,7 +12,6 @@ import commentRouter from "./routes/comment.routes";
 import likeRouter from "./routes/like.routes";
 const app: Express = express();
 const PORT = process.env.PORT || 5000;
-app.set("trust proxy", 1);
 
 require("dotenv").config();
 app.use(express.urlencoded({ extended: true }));
@@ -20,10 +19,7 @@ app.use(express.json());
 app.use(mongoSanitize());
 app.use(
   cors({
-    origin: [
-      "https://youtube-clone-frontend.onrender.com",
-      "http://localhost:3000",
-    ],
+    origin: ["https://marutube.shop/", "http://localhost:3000"],
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true,
   })
@@ -46,7 +42,8 @@ app.use(
       maxAge: 1000 * 60 * 60 * 24 * 7,
       secure: true,
       sameSite: "none",
-      domain: ".onrender.com",
+      domain: ".marutube.shop",
+      path: "/",
     },
   })
 );
